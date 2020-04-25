@@ -1,3 +1,4 @@
+import os
 from flask import Flask, render_template,abort
 app = Flask(__name__)	
 
@@ -16,5 +17,5 @@ def alumno(id):
 		if alumno["id"]==id:
 			return render_template("alumno.html",alum=alumno)
 	abort(404)
-	
-app.run(debug=True)
+port=os.environ["PORT"]
+app.run('0.0.0.0', int(port), debug=False)
